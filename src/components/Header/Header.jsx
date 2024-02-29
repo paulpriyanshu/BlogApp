@@ -1,6 +1,31 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 function Header() {
+  const navigate=useNavigate()
+  const authStatus=useSelector((state)=>state.auth.status)
+  const navItems=[
+    {
+      name:"Home",
+      slug:"/",
+      active:true
+    },
+    {
+      name:"Login",
+      slug:"/login",
+      active:!authStatus
+    },
+    {
+      name:"Signup",
+      slug:"/signup",
+      active:!authStatus
+    },
+
+    
+  ]
+
+
   return (
     <header className='py-3 shadow bg-gray-500'>
     <Container>
